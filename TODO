@@ -1,0 +1,3 @@
+log lib instead of fprintf (cf caches work, or tinder)
+compiler errors
+handle memory in d16_compiler XXX urgent
