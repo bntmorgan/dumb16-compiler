@@ -70,6 +70,7 @@ _ {return tREGSEP;}
 {INTEGER} {yylval.integer = strtol(yytext, NULL, 0); return tINTEGER;}
 {WHITESPACE} {}
 \n {line++;}
+\${WORD} {yytext++; yylval.string = strdup(yytext); return tRLABEL;}
 \*{WORD} {yytext++; yylval.string = strdup(yytext); return tULABEL;}
 {WORD}: {yytext[(yytext[0] == '\0') ? 0 : strlen(yytext) - 1] = '\0';
   yylval.string = strdup(yytext); return tDLABEL;}

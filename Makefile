@@ -105,7 +105,7 @@ binary/fibo.s: ./binary/d16_compiler/d16_compiler.elf sample/fibo.c
 	$< sample/fibo.c -o $@
 
 binary/fibo.bin: ./binary/d16_assembler/d16_assembler.elf binary/fibo.s
-	$< sample/fibo.s -o $@
+	$< binary/fibo.s -o $@
 
 disass_fibo: ./binary/d16_disassembler/d16_disassembler.elf binary/fibo.bin
 	$< binary/fibo.bin

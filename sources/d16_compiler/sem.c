@@ -33,10 +33,36 @@ uint16_t lc;
 uint16_t pc;
 struct d16_table lcs;
 
+void sem_start(void) {
+  char l[0x100];
+  // Add label start
+  sprintf(&l[0], "start");
+  // add label name
+  lbl_add(strdup(l), pc);
+  // init stack base
+  compile(D16_OP_AFC, 13, 0, 0);
+  // call the main function
+  sprintf(&l[0], "main");
+  // save return address
+  // afc r0 with return adress
+  compile_op_label(D16_OP_AFC, 0, 0, 0, l);
+  // afc BP with r0
+  compile(D16_OP_STP, 0, 13, 0);
+  // jmp to main
+  compile_label(D16_OP_JMP, strdup(l));
+  // Add label end
+  sprintf(&l[0], "end");
+  // add label name
+  lbl_add(strdup(l), pc);
+  // infinite loop
+  compile_label(D16_OP_JMP, strdup(l));
+}
+
 int sem_init(void) {
   d16_table_init(&lcs, sizeof(char));
   lc = -1;
   pc = 0;
+  sem_start();
   return 0;
 }
 

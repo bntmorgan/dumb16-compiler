@@ -38,7 +38,7 @@ along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 %token <integer> tJMZ tJMR tCHAR tEQU
 %token <integer> tINTEGER tERROR tC tRPAR tLPAR
 %token <integer> tREG tREGSEP tDOLLAR tIMMEDIATE
-%token <string> tULABEL tDLABEL
+%token <string> tULABEL tDLABEL tRLABEL
 
 %type <integer> reg
 
@@ -132,7 +132,7 @@ instruction : tADD reg tC reg tC reg {
   sem_afc(&i);
 }
 
-            | tAFC reg tC tULABEL {
+            | tAFC reg tC tRLABEL {
   struct ins i = {
     .opcode = D16_OP_AFC,
     .op0 = $2,
