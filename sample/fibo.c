@@ -21,6 +21,8 @@ int fibo(int n);
 
 int lordum(int a, int b, int c) {
   int c = 'a';
+  int d = 0x1000;
+  *d = c;
   while (1) {
     c = c + 1;
     while (2) {

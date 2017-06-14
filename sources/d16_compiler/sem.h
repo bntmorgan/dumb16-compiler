@@ -34,6 +34,7 @@ void sem_exp_op(int op);
 void sem_exp_id(char *id);
 void sem_exp_integer(int v);
 void sem_afc(char *id);
+void sem_afc_pointer(char *id);
 void sem_body_begin(char *f, unsigned int n);
 void sem_body_end(void);
 void sem_proto_end(char *f, unsigned int n);

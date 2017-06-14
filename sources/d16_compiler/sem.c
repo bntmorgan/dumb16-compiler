@@ -154,18 +154,35 @@ void sem_exp_integer(int v) {
   compile(D16_OP_STP, sym_temp_get() & 0xff, 13, 0);
 }
 
-void sem_afc(char *id) {
+void sem_afc_pointer(char *id) {
   // Get the symbol to copy in temp var
   struct sym *s;
   if (sym_get(id, &s)) {
     fprintf(stderr, "%s undeclared\n", id);
     exit(1);
   }
-  // Load local var
+  // load pointer address
+  compile(D16_OP_LOP, 1, s->a & 0xff, 13);
+  // load pointer
   compile(D16_OP_LOP, 0, sym_temp_get() & 0xff, 13);
-  // Remove last temp var from exp
+  // remove last temp var from exp
   sym_temp_dec();
-  // Store it in temp var
+  // store it in temp var
+  compile(D16_OP_STP, 0, 1, 0);
+}
+
+void sem_afc(char *id) {
+  // get the symbol to copy in temp var
+  struct sym *s;
+  if (sym_get(id, &s)) {
+    fprintf(stderr, "%s undeclared\n", id);
+    exit(1);
+  }
+  // load local var
+  compile(D16_OP_LOP, 0, sym_temp_get() & 0xff, 13);
+  // remove last temp var from exp
+  sym_temp_dec();
+  // store it in temp var
   compile(D16_OP_STP, s->a & 0xff, 13, 0);
 }
 

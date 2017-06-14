@@ -41,7 +41,7 @@ along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 };
 
 // Token definition
-%token tEQU tADD tSUB tMUL tDIV tLBRACE tRBRACE tLBRACKET tRBRACKET tOR tAND
+%token tEQU tADD tSUB tSTAR tDIV tLBRACE tRBRACE tLBRACKET tRBRACKET tOR tAND
 %token tLPAR tRPAR tCOMMA tINT tRETURN tIF tELSE tWHILE tERROR tSEMI tVOID
 %token tAFC
 %token<integer> tINTEGER tCHAR
@@ -59,7 +59,7 @@ along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 %left tEQU
 %left tOR tAND
 %left tADD tSUB
-%left tMUL tDIV
+%left tSTAR tDIV
 
 %%
 
@@ -124,6 +124,9 @@ id : tID {
 afc : tID tAFC exp {
   sem_afc($1);
   printf("afc end\n");
+} | tSTAR tID tAFC exp {
+  sem_afc_pointer($2);
+  printf("afc pointer end\n");
 };
 
 while : tWHILE { sem_while_begin(); } tLPAR exp {
@@ -171,7 +174,7 @@ exp :
     sem_exp_op(D16_OP_SUB);
     printf("sub end\n");
   } |
-  exp tMUL exp {
+  exp tSTAR exp {
     sem_exp_op(D16_OP_SHL);
     printf("mul end\n");
   } |

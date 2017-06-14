@@ -48,7 +48,7 @@ ID {ALPHA}{WORD}*
 "=" {return tAFC;}
 "+" {return tADD;}
 "-" {return tSUB;}
-"*" {return tMUL;}
+"*" {return tSTAR;}
 "/" {return tDIV;}
 "|" {return tOR;}
 "&" {return tAND;}
