@@ -19,6 +19,27 @@ along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 
 int fibo(int n);
 
+int screen(void) {
+  int white = 0x0f00, blink = 0x9f00;
+  int i = 0x4000;
+  int dash = '-';
+  while (i < 0x4fa0) {
+    // draw character
+    if (i == 0x4100) {
+      *i = blink | dash;
+    } else {
+      if (i == 0x4200) {
+        *i = blink | dash;
+      }
+      else {
+        *i = white | dash;
+      }
+    }
+    i = i + 2;
+  }
+  return 0;
+}
+
 int lordum(int a, int b, int c) {
   int c = 'a';
   int d = 0x1000;

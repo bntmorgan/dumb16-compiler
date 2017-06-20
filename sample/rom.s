@@ -19,7 +19,7 @@ along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 
   afc r0, '-'
   afc r1, '-'
-  afc r2, *loop_init
+  afc r2, $loop_init
   afc r7, $0x0f00 // white style
   afc r8, $0x9f00 // blink style
 loop_init:

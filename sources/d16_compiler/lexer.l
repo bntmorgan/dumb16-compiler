@@ -61,6 +61,10 @@ ID {ALPHA}{WORD}*
 "," {return tCOMMA;}
 ";" {return tSEMI;}
 "==" {return tEQU;}
+"<=" {return tLTE;}
+">=" {return tGTE;}
+"<" {return tLT;}
+">" {return tGT;}
 int {return tINT;}
 void {return tVOID;}
 return {return tRETURN;}

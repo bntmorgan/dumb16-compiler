@@ -43,7 +43,7 @@ along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 // Token definition
 %token tEQU tADD tSUB tSTAR tDIV tLBRACE tRBRACE tLBRACKET tRBRACKET tOR tAND
 %token tLPAR tRPAR tCOMMA tINT tRETURN tIF tELSE tWHILE tERROR tSEMI tVOID
-%token tAFC
+%token tAFC tGT tLT tGTE tLTE
 %token<integer> tINTEGER tCHAR
 %token<string> tID
 
@@ -56,7 +56,7 @@ along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 
 // Token priorities
 %nonassoc tAFC
-%left tEQU
+%left tEQU tLT tGT tLTE tGTE
 %left tOR tAND
 %left tADD tSUB
 %left tSTAR tDIV
@@ -185,6 +185,22 @@ exp :
   exp tEQU exp {
     sem_exp_op(D16_OP_EQU);
     printf("equ end\n");
+  } |
+  exp tGTE exp {
+    sem_exp_op(D16_OP_EQU);
+    printf("gte end\n");
+  } |
+  exp tLTE exp {
+    sem_exp_op(D16_OP_EQU);
+    printf("lte end\n");
+  } |
+  exp tGT exp {
+    sem_exp_op(D16_OP_EQU);
+    printf("gt end\n");
+  } |
+  exp tLT exp {
+    sem_exp_op(D16_OP_EQU);
+    printf("lt end\n");
   } |
   exp tOR exp {
     sem_exp_op(D16_OP_OR);
