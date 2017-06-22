@@ -45,7 +45,7 @@ void sem_start(void) {
   sprintf(&l[0], "main");
   // save return address
   // afc r0 with return adress
-  compile_op_label(D16_OP_AFC, 0, 0, 0, l);
+  compile(D16_OP_AFC, 0, ((pc + 12) >> 8) & 0xff, (pc + 12) & 0xff);
   // afc BP with r0
   compile(D16_OP_STP, 0, 13, 0);
   // jmp to main
@@ -79,7 +79,7 @@ void comp(struct ins *i) {
   }
   printf(">   "); d16_ifprintf(i, stdout);
   fprintf(file_out, "  "); d16_ifprintf(i, file_out);
-  pc += 2;
+  pc += 4;
 }
 
 void compile(uint8_t opcode, uint8_t op0, uint8_t op1, uint8_t op2) {
@@ -247,7 +247,7 @@ void sem_funcall(char *f) {
   compile(D16_OP_ADD, 13, 13, 0);
   // save return address
   // afc r0 with return adress
-  compile_op_label(D16_OP_AFC, 0, 0, 0, f);
+  compile(D16_OP_AFC, 0, ((pc + 12) >> 8) & 0xff, (pc + 12) & 0xff);
   // afc BP with r0
   compile(D16_OP_STP, 0, 13, 0);
   // call the function

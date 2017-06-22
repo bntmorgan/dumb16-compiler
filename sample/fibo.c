@@ -37,6 +37,35 @@ int screen(int a) {
     }
     i = i + 2;
   }
+  // Draw message
+  i = 0x4710;
+  *i = 'P' | blink; i = i + 2;
+  *i = 'r' | blink; i = i + 2;
+  *i = 'o' | blink; i = i + 2;
+  *i = 'j' | blink; i = i + 2;
+  *i = 'e' | blink; i = i + 2;
+  *i = 't' | blink; i = i + 2;
+  *i = ' ' | blink; i = i + 2;
+  *i = 'S' | blink; i = i + 2;
+  *i = 'y' | blink; i = i + 2;
+  *i = 's' | blink; i = i + 2;
+  *i = 't' | blink; i = i + 2;
+  *i = 'e' | blink; i = i + 2;
+  *i = 'm' | blink; i = i + 2;
+  *i = 'e' | blink; i = i + 2;
+  *i = ' ' | blink; i = i + 2;
+  *i = 'I' | blink; i = i + 2;
+  *i = 'n' | blink; i = i + 2;
+  *i = 'f' | blink; i = i + 2;
+  *i = 'o' | blink; i = i + 2;
+  *i = ' ' | blink; i = i + 2;
+  *i = '2' | blink; i = i + 2;
+  *i = '0' | blink; i = i + 2;
+  *i = '1' | blink; i = i + 2;
+  *i = '8' | blink; i = i + 2;
+  *i = ' ' | blink; i = i + 2;
+  *i = ':' | blink; i = i + 2;
+  *i = ')' | blink; i = i + 2;
   return 0;
 }
 
