@@ -27,13 +27,10 @@ int screen(int a) {
     // draw character
     if (i == 0x4100) {
       *i = blink | dash;
-    } else {
-      if (i == 0x4200) {
+    } else if (i == 0x4200) {
         *i = blink | dash;
-      }
-      else {
-        *i = white | dash;
-      }
+    } else {
+      *i = white | dash;
     }
     i = i + 2;
   }
