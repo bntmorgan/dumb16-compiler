@@ -19,7 +19,7 @@ along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 
 int fibo(int n);
 
-int screen(void) {
+int screen(int a) {
   int white = 0x0f00, blink = 0x9f00;
   int i = 0x4000;
   int dash = '-';
@@ -60,6 +60,7 @@ int toto(int b) {
 }
 
 int main(void) {
+  int a = screen(1);
   int n = toto(4);
   return 0;
 }

@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+rom:
   afc r0, '-'
   afc r1, '-'
   afc r2, $loop_init
