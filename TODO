@@ -1,6 +1,5 @@
 log lib instead of fprintf (cf caches work, or tinder)
 compiler errors
 handle memory in d16_compiler XXX urgent
-handle or and gt[e]? lt[e]? in assembler
-handle * and & in sem.c
+handle & in sem.c
 return has to be a real end to the function
