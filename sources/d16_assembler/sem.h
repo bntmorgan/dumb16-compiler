@@ -30,6 +30,8 @@ void sem_add(struct ins *i);
 void sem_sub(struct ins *i);
 void sem_shl(struct ins *i);
 void sem_shr(struct ins *i);
+void sem_or(struct ins *i);
+void sem_and(struct ins *i);
 void sem_equ(struct ins *i);
 void sem_lte(struct ins *i);
 void sem_gte(struct ins *i);

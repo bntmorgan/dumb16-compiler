@@ -35,7 +35,7 @@ along with dumb16-compiler.  If not, see <http://www.gnu.org/licenses/>.
 
 // Definition des types des tokens
 %token <integer> tNOP tADD tSUB tSHL tSHR tAFC tCOP tLOP tLOD tSTR tSTP tJMP
-%token <integer> tJMZ tJMR tCHAR tEQU
+%token <integer> tJMZ tJMR tCHAR tOR tAND tEQU tLTE tGTE tLT tGT
 %token <integer> tINTEGER tERROR tC tRPAR tLPAR
 %token <integer> tREG tREGSEP tDOLLAR tIMMEDIATE
 %token <string> tULABEL tDLABEL tRLABEL
@@ -100,6 +100,26 @@ instruction : tADD reg tC reg tC reg {
   sem_shr(&i);
 }
 
+            | tOR reg tC reg tC reg {
+  struct ins i = {
+    .opcode = D16_OP_OR,
+    .op0 = $2,
+    .op1 = $4,
+    .op2 = $6,
+  };
+  sem_or(&i);
+}
+
+            | tAND reg tC reg tC reg {
+  struct ins i = {
+    .opcode = D16_OP_AND,
+    .op0 = $2,
+    .op1 = $4,
+    .op2 = $6,
+  };
+  sem_and(&i);
+}
+
             | tEQU reg tC reg tC reg {
   struct ins i = {
     .opcode = D16_OP_EQU,
@@ -108,6 +128,46 @@ instruction : tADD reg tC reg tC reg {
     .op2 = $6,
   };
   sem_equ(&i);
+}
+
+            | tLTE reg tC reg tC reg {
+  struct ins i = {
+    .opcode = D16_OP_LTE,
+    .op0 = $2,
+    .op1 = $4,
+    .op2 = $6,
+  };
+  sem_lte(&i);
+}
+
+            | tGTE reg tC reg tC reg {
+  struct ins i = {
+    .opcode = D16_OP_GTE,
+    .op0 = $2,
+    .op1 = $4,
+    .op2 = $6,
+  };
+  sem_gte(&i);
+}
+
+            | tLT reg tC reg tC reg {
+  struct ins i = {
+    .opcode = D16_OP_LT,
+    .op0 = $2,
+    .op1 = $4,
+    .op2 = $6,
+  };
+  sem_lt(&i);
+}
+
+            | tGT reg tC reg tC reg {
+  struct ins i = {
+    .opcode = D16_OP_GT,
+    .op0 = $2,
+    .op1 = $4,
+    .op2 = $6,
+  };
+  sem_gt(&i);
 }
 
             | tAFC reg tC tIMMEDIATE {

@@ -49,7 +49,13 @@ IMMEDIATE [$]{INTEGER}
 (SUB|sub) {return tSUB;}
 (SHL|shl) {return tSHL;}
 (SHR|shr) {return tSHR;}
+(OR|or)   {return tOR;}
+(AND|and) {return tAND;}
 (EQU|equ) {return tEQU;}
+(lte|lte) {return tLTE;}
+(gte|gte) {return tGTE;}
+(LT|lt)   {return tLT;}
+(GT|gt)   {return tGT;}
 (AFC|afc) {return tAFC;}
 (COP|cop) {return tCOP;}
 (LOD|lod) {return tLOD;}

@@ -79,6 +79,14 @@ void sem_shr(struct ins *i) {
   compile(i);
 }
 
+void sem_or(struct ins *i) {
+  compile(i);
+}
+
+void sem_and(struct ins *i) {
+  compile(i);
+}
+
 void sem_equ(struct ins *i) {
   compile(i);
 }

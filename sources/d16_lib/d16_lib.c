@@ -194,28 +194,14 @@ void d16_assert_address(unsigned int addr) {
 }
 
 void d16_assert_opcode(struct ins *i) {
-  assertf(
-      i->opcode == D16_OP_NOP ||
-      i->opcode == D16_OP_ADD ||
-      i->opcode == D16_OP_SUB ||
-      i->opcode == D16_OP_SHL ||
-      i->opcode == D16_OP_SHR ||
-      i->opcode == D16_OP_EQU ||
-      i->opcode == D16_OP_AFC ||
-      i->opcode == D16_OP_COP ||
-      i->opcode == D16_OP_LOD ||
-      i->opcode == D16_OP_LOP ||
-      i->opcode == D16_OP_STR ||
-      i->opcode == D16_OP_STP ||
-      i->opcode == D16_OP_JMP ||
-      i->opcode == D16_OP_JMZ ||
-      i->opcode == D16_OP_JMR,
-      "Bad opcode 0x%02x", i->opcode);
+  assertf(strcmp(mnemonics[i->opcode], "") != 0, "Bad opcode 0x%02x",
+      i->opcode);
 }
 
 char *mnemonics[0x100] = {
   // 0x00
-  "nop", "add", "sub", "shl", "shr", "or", "and", "equ", "", "", "", "", "", "", "", "",
+  "nop", "add", "sub", "shl", "shr", "or", "and", "equ", "lte", "gte", "lt",
+      "gt", "", "", "", "",
   // 0x10
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
   // 0x20
