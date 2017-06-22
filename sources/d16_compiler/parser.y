@@ -186,20 +186,20 @@ exp :
     sem_exp_op(D16_OP_EQU);
     printf("equ end\n");
   } |
-  exp tGTE exp {
-    sem_exp_op(D16_OP_EQU);
+  exp tLTE exp {
+    sem_exp_op(D16_OP_LTE);
     printf("gte end\n");
   } |
-  exp tLTE exp {
-    sem_exp_op(D16_OP_EQU);
+  exp tGTE exp {
+    sem_exp_op(D16_OP_GTE);
     printf("lte end\n");
   } |
-  exp tGT exp {
-    sem_exp_op(D16_OP_EQU);
+  exp tLT exp {
+    sem_exp_op(D16_OP_LT);
     printf("gt end\n");
   } |
-  exp tLT exp {
-    sem_exp_op(D16_OP_EQU);
+  exp tGT exp {
+    sem_exp_op(D16_OP_GT);
     printf("lt end\n");
   } |
   exp tOR exp {

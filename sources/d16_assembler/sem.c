@@ -83,6 +83,22 @@ void sem_equ(struct ins *i) {
   compile(i);
 }
 
+void sem_lte(struct ins *i) {
+  compile(i);
+}
+
+void sem_gte(struct ins *i) {
+  compile(i);
+}
+
+void sem_lt(struct ins *i) {
+  compile(i);
+}
+
+void sem_gt(struct ins *i) {
+  compile(i);
+}
+
 void sem_afc(struct ins *i) {
   compile(i);
 }
