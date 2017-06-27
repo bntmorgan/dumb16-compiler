@@ -28,7 +28,7 @@ int screen(int a) {
     if (i == 0x4100) {
       *i = blink | dash;
     } else if (i == 0x4200) {
-        *i = blink | dash;
+      *i = blink | dash;
     } else {
       *i = white | dash;
     }
