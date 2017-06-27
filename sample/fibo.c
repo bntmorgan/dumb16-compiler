@@ -36,7 +36,7 @@ int screen(int a) {
   }
   // Draw message
   i = 0x4710;
-  *i = 'P' | blink; i = i + 2;
+  i[0] = 'P' | blink; i = i + 2;
   *i = 'r' | blink; i = i + 2;
   *i = 'o' | blink; i = i + 2;
   *i = 'j' | blink; i = i + 2;

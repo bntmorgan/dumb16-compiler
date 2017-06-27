@@ -127,7 +127,10 @@ afc : tID tAFC exp {
 } | tSTAR tID tAFC exp {
   sem_afc_pointer($2);
   printf("afc pointer end\n");
-};
+} | tID tLBRACKET exp tRBRACKET tAFC exp {
+  sem_afc_bracket($1);
+  printf("afc pointer end\n");
+}
 
 while : tWHILE { sem_while_begin(); } tLPAR exp {
   sem_while_cond();

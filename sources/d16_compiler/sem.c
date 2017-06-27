@@ -131,7 +131,7 @@ void sem_exp_op(int op) {
 }
 
 void sem_exp_id(char *id) {
-  // Get the symbol to copy in temp var
+  // get the symbol to copy in temp var
   struct sym *s;
   if (sym_get(id, &s)) {
     fprintf(stderr, "%s undeclared\n", id);
@@ -155,7 +155,7 @@ void sem_exp_integer(int v) {
 }
 
 void sem_afc_pointer(char *id) {
-  // Get the symbol to copy in temp var
+  // get the symbol to copy in temp var
   struct sym *s;
   if (sym_get(id, &s)) {
     fprintf(stderr, "%s undeclared\n", id);
@@ -169,6 +169,29 @@ void sem_afc_pointer(char *id) {
   sym_temp_dec();
   // store it in temp var
   compile(D16_OP_STP, 0, 1, 0);
+}
+
+void sem_afc_bracket(char *id) {
+  struct sym *s;
+  // get the offset
+  compile(D16_OP_LOP, 0, sym_temp_get() & 0xff, 13);
+  // remove offset temp
+  sym_temp_dec();
+  // get the symbol address
+  if (sym_get(id, &s)) {
+    fprintf(stderr, "%s undeclared\n", id);
+    exit(1);
+  }
+  // load pointer address
+  compile(D16_OP_LOP, 1, s->a & 0xff, 13);
+  // add the offset to the pointer
+  compile(D16_OP_ADD, 2, 1, 0);
+  // load value to be stored at pointed address
+  compile(D16_OP_LOP, 0, sym_temp_get() & 0xff, 13);
+  // remove last temp var from exp
+  sym_temp_dec();
+  // store it in temp var
+  compile(D16_OP_STP, 0, 2, 0);
 }
 
 void sem_afc(char *id) {
