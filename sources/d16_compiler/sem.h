@@ -31,7 +31,9 @@ void compile(uint8_t opcode, uint8_t op0, uint8_t op1, uint8_t op2);
 
 // Semantics
 void sem_exp_op(int op);
+void sem_exp_and_id(char *id);
 void sem_exp_id(char *id);
+void sem_exp_bracket(char *id);
 void sem_exp_integer(int v);
 void sem_afc(char *id);
 void sem_afc_pointer(char *id);

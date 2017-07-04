@@ -213,6 +213,9 @@ exp :
     sem_exp_op(D16_OP_AND);
     printf("and end\n");
   } |
+  tAND tID {
+    sem_exp_and_id($2);
+  } |
   tID {
     sem_exp_id($1);
   } |
@@ -224,6 +227,9 @@ exp :
   } |
   funcall {
     printf("funcall end\n");
+  } |
+  tID tLBRACKET exp tRBRACKET {
+    sem_exp_bracket($1);
   }
 
 funcall : tID tLPAR c_params tRPAR {
