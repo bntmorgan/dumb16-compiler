@@ -95,6 +95,11 @@ clean:
 	./binary/d16_assembler/d16_assembler.elf $^ -o $@
 	./binary/d16_disassembler/d16_disassembler.elf $@
 
+../dumb16/sources/dumb/rtl/rom.hex: sample/rom.bin
+	./gen_hex.sh $^ $@
+
+rom: ../dumb16/sources/dumb/rtl/rom.hex
+
 mr-proper: mr-proper-vim clean
 
 mr-proper-vim:

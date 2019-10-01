@@ -63,31 +63,15 @@ int screen(int a) {
   *i = ' ' | blink; i = i + 2;
   *i = ':' | blink; i = i + 2;
   *i = ')' | blink; i = i + 2;
-  return 0;
-}
-
-int lordum(int a, int b, int c) {
-  int c = 'a';
-  int d = 0x1000;
-  *d = c;
-  while (1) {
-    c = c + 1;
-    while (2) {
-      int e;
-      e = c + 1;
-    }
+  if (1) {
+    i[0] = i[0];
   }
-  return a + b + c;
-}
-
-int toto(int b) {
-  int e = b;
-  return b;
+  return 0;
 }
 
 int main(void) {
   int a = screen(1);
-  int n = toto(4);
+  int n = fibo(4);
   return 0;
 }
 
